@@ -14,4 +14,13 @@ kubectl create whatever --dry-run=true -o yaml | kubectl apply -f -
 kubectl config current-context
 
 kubectl get pods --namespace kube-system
+
+Nodes:
+kubectl cordon/uncordon <node name> # nodes become unscheduable, existing pods not deleted
+kubectl drain <node name> # will delete existing pods and remove noded
+
+
 ```
+
+Some References:
+https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes
