@@ -2,6 +2,9 @@
 
 #### Some commands:
 ```
+kubectl exec -it centos2 -- bash
+kubect get pods -o wide
+
 kubectl describe quota
 kubectl get namespace
 kubectl get configmaps
