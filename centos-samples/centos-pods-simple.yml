@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: centos1
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: centos1
+    image: centos:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "250m"
+    command:
+       - sleep
+       - "3600"
+    volumeMounts:
+      - mountPath: /centos1
+        name: test
+  volumes:
+    - name: test
+      emptyDir: {}
+
+# test

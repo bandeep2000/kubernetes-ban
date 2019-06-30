@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: centos2-pvc
+  labels:
+    app: centos2-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  
+# kubectl describe pvc centos1
+# works with gce storage class automatically

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: centos2
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: centos1
+    image: centos:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "250m"
+    command:
+       - sleep
+       - "3600"
+    volumeMounts:
+      - mountPath: /centos2
+        name: test2
+  
+  volumes:
+      - name: test2
+        persistentVolumeClaim:
+          claimName: centos2-pvc
+
+# PVC->Volume-> volumeMounts
