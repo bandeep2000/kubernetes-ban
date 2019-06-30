@@ -15,6 +15,9 @@ kubectl config current-context
 
 kubectl get pods --namespace kube-system
 
+# Autoscaling
+kubectl get hpa
+
 Nodes:
 kubectl cordon/uncordon <node name> # nodes become unscheduable, existing pods not deleted
 kubectl drain <node name> # will delete existing pods and remove noded
