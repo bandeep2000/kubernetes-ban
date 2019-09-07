@@ -23,6 +23,8 @@ kubectl cordon/uncordon <node name> # nodes become unscheduable, existing pods n
 kubectl drain <node name> # will delete existing pods and remove noded
 
 
+helm install --name jenkins stable/jenkins --namespace jenkins
+
 ```
 
 Some References:
