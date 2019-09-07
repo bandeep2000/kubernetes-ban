@@ -24,6 +24,7 @@ kubectl drain <node name> # will delete existing pods and remove noded
 
 
 helm install --name jenkins stable/jenkins --namespace jenkins
+helm install stable/jenkins --set master.adminPassword=<passwd>
 
 ```
 
