@@ -22,6 +22,10 @@ Nodes:
 kubectl cordon/uncordon <node name> # nodes become unscheduable, existing pods not deleted
 kubectl drain <node name> # will delete existing pods and remove noded
 
+Helm:
+kubectl -n kube-system create serviceaccount tiller
+kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+helm init --service-account tiller
 
 helm install --name jenkins stable/jenkins --namespace jenkins
 helm install stable/jenkins --set master.adminPassword=<passwd>
