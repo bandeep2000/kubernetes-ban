@@ -28,6 +28,9 @@ kubectl drain <node name> # will delete existing pods and remove noded
 Run command:
 kubectl exec -it nginx11  -- bash # nginx11 is pod k get pods
 
+# goot utils tool
+kubectl run --generator=run-pod/v1 --rm utils -it --image eddiehale/utils bash
+
 Helm:
 kubectl -n kube-system create serviceaccount tiller
 kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
