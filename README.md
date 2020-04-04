@@ -21,6 +21,8 @@ k describe quota -n default # Get resource quota for name spance
 # Autoscaling
 kubectl get hpa
 
+k port-forward nginx1 8080:80
+
 Nodes:
 kubectl cordon/uncordon <node name> # nodes become unscheduable, existing pods not deleted
 kubectl drain <node name> # will delete existing pods and remove noded
