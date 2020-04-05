@@ -21,5 +21,3 @@ spec:
   volumes:
     - name: test
       emptyDir: {}
-
-# test
