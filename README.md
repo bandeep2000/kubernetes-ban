@@ -27,6 +27,10 @@ Nodes:
 kubectl cordon/uncordon <node name> # nodes become unscheduable, existing pods not deleted
 kubectl drain <node name> # will delete existing pods and remove noded
 
+Label node:
+k label node minikube web=app
+k get nodes --show-labels
+
 Run command:
 kubectl exec -it nginx11  -- bash # nginx11 is pod k get pods
 
