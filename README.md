@@ -31,6 +31,9 @@ Label node:
 k label node minikube web=app
 k get nodes --show-labels
 
+Untaint node:
+k taint node minikube web-
+
 Run command:
 kubectl exec -it nginx11  -- bash # nginx11 is pod k get pods
 
