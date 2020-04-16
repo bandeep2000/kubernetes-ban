@@ -42,9 +42,13 @@ kubectl run --generator=run-pod/v1 --rm utils -it --image eddiehale/utils bash
 k run -it --rm busybox6 --image=busybox sh - Busy Box!!
 
 Helm:
+# No need of these in helm 3
 kubectl -n kube-system create serviceaccount tiller
 kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
 helm init --service-account tiller
+
+brew install helm
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 helm install --name jenkins stable/jenkins --namespace jenkins
 helm install stable/jenkins --set master.adminPassword=<passwd>
