@@ -64,5 +64,5 @@ https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes
 Helm:
 https://www.digitalocean.com/community/tutorials/how-to-install-software-on-kubernetes-clusters-with-the-helm-package-manager
 
-Helm charts:
+Helm  charts:
 https://github.com/helm/charts/tree/master/stable
