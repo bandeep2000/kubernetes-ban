@@ -57,6 +57,7 @@ helm install stable/jenkins --set master.adminPassword=<passwd>
 
 Some References:
 
+
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/ 
 
 https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes
