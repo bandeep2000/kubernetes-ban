@@ -34,6 +34,10 @@ k get nodes --show-labels
 Untaint node:
 k taint node minikube web-
 
+# secrets
+kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
+kubectl create secret generic git-secret --from-literal=username=<redacted>--from-literal=password=<redacted>
+
 Run command:
 kubectl exec -it nginx11  -- bash # nginx11 is pod k get pods
 
@@ -56,6 +60,7 @@ helm install stable/jenkins --set master.adminPassword=<passwd>
 ```
 
 Some References:
+
 
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/ 
 
