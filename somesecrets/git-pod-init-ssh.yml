@@ -1,0 +1,43 @@
+# Checksout code in the git repo
+#ssh-keyscan $YOUR_GIT_HOST > /tmp/known_hosts # git this from ~/.ssh/knownhost
+#https://github.com/kubernetes/git-sync/blob/master/docs/ssh.md
+# Remove git
+apiVersion: v1
+kind: Pod
+metadata:
+  name: git-test1
+spec:
+  initContainers:
+  - image: k8s.gcr.io/git-sync:v3.0.1
+    name: test-server
+    args:
+         - "-ssh"
+         - "-repo=git@github.com:bandeep2000/samples1"
+         - "-dest=/tmp/git1"
+         - "-branch=master"
+         - "-depth=1"
+    volumeMounts:
+    - name: git-source
+      mountPath: /tmp/git1
+    - name: git-secret
+      mountPath: /etc/git-secret
+      readOnly: true
+    env:
+    - name: GIT_SYNC_DEST
+      value: git-sync
+    - name: GIT_SYNC_ONE_TIME  
+      value: "true"
+  containers:
+  - image: debian
+    name: busybox
+    command: ["sleep", "3600"]
+    volumeMounts:
+    - name: git-source
+      mountPath: /tmp/git1
+  volumes:
+  - name: git-source
+    emptyDir: {}
+  - name: git-secret
+    secret:
+          secretName: git-creds
+          defaultMode: 0400
