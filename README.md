@@ -40,6 +40,8 @@ kubectl create secret generic git-secret --from-literal=username=<redacted>--fro
 
 Run command:
 kubectl exec -it nginx11  -- bash # nginx11 is pod k get pods
+kubectl get all # good command, list everything in namespace
+k explain pod.spec.volumes
 
 # goot utils tool
 kubectl run --generator=run-pod/v1 --rm utils -it --image eddiehale/utils bash

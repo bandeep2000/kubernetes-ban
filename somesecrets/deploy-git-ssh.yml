@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: git-sync
+spec:
+  selector:
+    matchLabels:
+      demo: git-sync
+  template:
+    metadata:
+      labels:
+        demo: git-sync
+    spec:
+      containers:
+      - image: python:2.7
+        name: python1
+        command: ["sleep", "3600"]
+        volumeMounts:
+        - name: git-source
+          mountPath: /tmp/git1
+      - name: git-sync
+        image: k8s.gcr.io/git-sync:v3.1.5
+        args:
+         - "-ssh"
+         - "-repo=git@github.com:bandeep2000/samples1"
+         - "-dest=linux"
+         - "-branch=master"
+         - "-depth=1"
+        securityContext:
+          runAsUser: 65533 # git-sync user
+        volumeMounts:  # secret volume mount
+        - name: git-secret
+          mountPath: /etc/git-secret
+          readOnly: true
+        - name: git-source
+          mountPath: /tmp/git
+      securityContext:
+        fsGroup: 65533 # to make SSH k
+      volumes:
+      - name: git-secret
+        secret:
+          secretName: git-creds
+          defaultMode: 0400
+      - name: git-source
+        emptyDir: {}
+      
