@@ -17,6 +17,8 @@ kubectl config current-context
 
 kubectl get pods --namespace kube-system
 
+k delete all --all
+
 k describe quota -n default # Get resource quota for name spance
 # Autoscaling
 kubectl get hpa
