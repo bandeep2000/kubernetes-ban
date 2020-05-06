@@ -33,6 +33,9 @@ Label node:
 k label node minikube web=app
 k get nodes --show-labels
 
+# Dry run with yaml
+k create -f pod5.yml --dry-run -o yaml
+
 Untaint node:
 k taint node minikube web-
 
