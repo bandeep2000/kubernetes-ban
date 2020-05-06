@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: busybox3
+   labels:
+    web: app
+spec:
+  containers:
+  - name: busybox2
+    image: busybox
+    command: ["sleep", "3600"]
+    securityContext:
+      # privelged mode ls /dev/ on container to be seen
+      privileged: true
+      # capabilities work at the container level, need to look more into it
+      capabilities:
+        add:
+        - CHOWN
