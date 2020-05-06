@@ -2,13 +2,12 @@
 #ssh-keyscan $YOUR_GIT_HOST > /tmp/known_hosts # git this from ~/.ssh/knownhost
 #https://github.com/kubernetes/git-sync/blob/master/docs/ssh.md
 # Remove git
-# NEED to debug this, init Container not working !!!!
 apiVersion: v1
 kind: Pod
 metadata:
   name: git-sync1
 spec:
-  initContainers:
+  containers:
       - name: git-sync1
         image: k8s.gcr.io/git-sync:v3.1.5
         args:
@@ -25,7 +24,6 @@ spec:
           readOnly: true
         - name: git-source
           mountPath: /tmp/git
-  containers:
       - name: python
         image: python:2.7
         command: ["sleep","3600"]
