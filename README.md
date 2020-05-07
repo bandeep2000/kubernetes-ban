@@ -48,6 +48,10 @@ kubectl exec -it nginx11  -- bash # nginx11 is pod k get pods
 kubectl get all # good command, list everything in namespace
 k explain pod.spec.volumes
 
+jenkins docker on local:
+docker volume create  jenkins
+docker run -it -v jenkins:/var/jenkins_home/ -p 8081:8080 jenkins/jenkins:lts
+
 # goot utils tool
 kubectl run --generator=run-pod/v1 --rm utils -it --image eddiehale/utils bash
 k run -it --rm busybox6 --image=busybox sh - Busy Box!!
