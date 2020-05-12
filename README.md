@@ -39,6 +39,9 @@ k create -f pod5.yml --dry-run -o yaml
 Untaint node:
 k taint node minikube web-
 
+#namespace:
+kubectl config set-context --current --namespace=<ns>
+
 # secrets
 kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
 kubectl create secret generic git-secret --from-literal=username=<redacted>--from-literal=password=<redacted>
