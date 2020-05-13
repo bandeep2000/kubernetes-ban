@@ -8,4 +8,4 @@ spec:
     spec:
       containers:
       - name: hello-cloudbuild
-        image: bandeep2000/python-test:12345
+        image: bandeep2000/python-test:
