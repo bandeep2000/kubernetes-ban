@@ -35,6 +35,7 @@ k get nodes --show-labels
 
 # Dry run with yaml
 k create -f pod5.yml --dry-run -o yaml
+k run busybox --image=busybox --dry-run=client -o yaml
 
 Untaint node:
 k taint node minikube web-
